@@ -1,7 +1,13 @@
-const SearchBar = () => {
+const SearchBar = ({ requestProducts, count, setCount }) => {
+  const handleInput = (e) => {
+    e.preventDefault();
+    setCount(requestProducts());
+    console.log(count);
+  };
+
   return (
     <header>
-      <form>
+      <form onChange={handleInput}>
         <input type="text" placeholder="Search..." />
         <button type="submit">🍭</button>
       </form>
