@@ -1,14 +1,28 @@
-const SearchBar = ({ requestProducts, count, setCount }) => {
-  const handleInput = (e) => {
+import { useState } from "react";
+
+const SearchBar = ({ onSetSearchQuery }) => {
+  const [value, setValue] = useState("");
+
+  const handleChenge = ({ target }) => {
+    setValue(target.value);
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setCount(requestProducts());
-    console.log(count);
+    console.log(value);
+    onSetSearchQuery(value);
   };
 
   return (
     <header>
-      <form onChange={handleInput}>
-        <input type="text" placeholder="Search..." />
+      <form onSubmit={handleSubmit}>
+        <input
+          name="query"
+          onChange={handleChenge}
+          value={value}
+          type="text"
+          placeholder="Search..."
+        />
         <button type="submit">🍭</button>
       </form>
     </header>

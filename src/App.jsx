@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImaeGallery from "./components/ImaeGallery/ImaeGallery";
-import { requestProducts } from "./services/api";
+import usePhotosSearch from "./hooks/usePhotosSearch";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const { photos, isLoading, isError, onSetSearchQuery } = usePhotosSearch();
+  // const [count, setCount] = useState(0);
 
-  useEffect(() => {}, [count]);
+  // useEffect(() => {
+  //   console.log(isLoading);
+  //   console.log(isError);
+  //   console.log(photos);
+  // }, []);
 
-  console.log(setCount);
+  console.log(isLoading);
+  console.log(isError);
+  console.log(photos);
+
   return (
     <>
-      <SearchBar
-        setCount={setCount}
-        count={count}
-        requestProducts={requestProducts}
-      ></SearchBar>
+      <SearchBar onSetSearchQuery={onSetSearchQuery}></SearchBar>
       <ImaeGallery></ImaeGallery>
     </>
   );
