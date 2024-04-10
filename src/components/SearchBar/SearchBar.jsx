@@ -1,4 +1,6 @@
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { MagnifyingGlass } from "react-loader-spinner";
 
 const SearchBar = ({ onSetSearchQuery }) => {
   const [value, setValue] = useState("");
@@ -9,6 +11,9 @@ const SearchBar = ({ onSetSearchQuery }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (value === "") {
+      toast("Попрацюй пальчиками🤪");
+    }
     console.log(value);
     onSetSearchQuery(value);
   };
@@ -23,7 +28,19 @@ const SearchBar = ({ onSetSearchQuery }) => {
           type="text"
           placeholder="Search..."
         />
-        <button type="submit">🍭</button>
+        <Toaster />
+        <button type="submit">
+          <MagnifyingGlass
+            visible={true}
+            height="30"
+            width="30"
+            ariaLabel="magnifying-glass-loading"
+            wrapperStyle={{}}
+            wrapperClass="magnifying-glass-wrapper"
+            glassColor="#c0efff"
+            color="#e15b64"
+          />
+        </button>
       </form>
     </header>
   );

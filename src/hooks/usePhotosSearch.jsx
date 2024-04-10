@@ -7,20 +7,20 @@ const usePhotosSearch = () => {
   const [isError, setIserror] = useState(false);
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    async function fetchPhotos() {
-      try {
-        setIsloading(true);
-        const data = await requestProducts();
-        setPhotos(data);
-      } catch (error) {
-        setIserror(true);
-      } finally {
-        setIsloading(false);
-      }
-    }
-    fetchPhotos();
-  }, []);
+  //   useEffect(() => {
+  //     async function fetchPhotos() {
+  //       try {
+  //         setIsloading(true);
+  //         const data = await requestProducts();
+  //         setPhotos(data);
+  //       } catch (error) {
+  //         setIserror(true);
+  //       } finally {
+  //         setIsloading(false);
+  //       }
+  //     }
+  //     fetchPhotos();
+  //   }, []);
 
   useEffect(() => {
     if (query.length === 0) return;
@@ -28,16 +28,19 @@ const usePhotosSearch = () => {
     async function fetchPhotosByQuery() {
       try {
         setIsloading(true);
+        console.log(isLoading);
         const data = await requestPhotosByQuery(query);
-        setPhotos(data.photos);
-      } catch {
+        setPhotos(data.results);
+      } catch (error) {
         setIserror(true);
       } finally {
         setIsloading(false);
+        console.log(isLoading);
       }
     }
     fetchPhotosByQuery();
   }, [query]);
+
   const onSetSearchQuery = (searchTerm) => {
     setQuery(searchTerm);
   };

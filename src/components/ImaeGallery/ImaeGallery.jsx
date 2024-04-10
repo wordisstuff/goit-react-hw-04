@@ -1,11 +1,9 @@
-const ImaeGallery = () => {
+import ImageCard from "../ImaageCard/ImageCard";
+
+const ImaeGallery = ({ photos }) => {
   return (
     <ul>
-      <li>
-        <div>
-          <img src="" alt="" />
-        </div>
-      </li>
+      <ImageCard photos={photos} />
     </ul>
   );
 };

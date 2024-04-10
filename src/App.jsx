@@ -3,6 +3,8 @@ import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
 import ImaeGallery from "./components/ImaeGallery/ImaeGallery";
 import usePhotosSearch from "./hooks/usePhotosSearch";
+import Loader from "./components/Loader/Loader";
+import ErroreMessage from "./components/Loader/ErroreMessage";
 
 function App() {
   const { photos, isLoading, isError, onSetSearchQuery } = usePhotosSearch();
@@ -16,12 +18,17 @@ function App() {
 
   console.log(isLoading);
   console.log(isError);
-  console.log(photos);
+  // console.log(photos.results);
 
   return (
     <>
       <SearchBar onSetSearchQuery={onSetSearchQuery}></SearchBar>
-      <ImaeGallery></ImaeGallery>
+      {isError ? (
+        <ErroreMessage />
+      ) : (
+        <ImaeGallery photos={photos}></ImaeGallery>
+      )}
+      {isLoading ?? <Loader />}
     </>
   );
 }
