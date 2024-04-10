@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { requestPhotosByQuery, requestProducts } from "../services/api";
+import { requestPhotosByQuery } from "../services/api";
 
 const usePhotosSearch = () => {
   const [photos, setPhotos] = useState(null);
