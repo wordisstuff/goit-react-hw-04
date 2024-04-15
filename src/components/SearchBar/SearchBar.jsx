@@ -6,10 +6,12 @@ const SearchBar = ({ onSetSearchQuery }) => {
   const [value, setValue] = useState("");
 
   const handleChenge = ({ target }) => {
-    setValue(target.value.trim());
+    let queryWords = target.value.split(' ').filter(word => word !== '')
+    setValue(queryWords);
   };
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     if (value !== "") {
       onSetSearchQuery(value);
