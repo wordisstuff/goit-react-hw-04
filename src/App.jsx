@@ -6,7 +6,7 @@ import ErroreMessage from "./components/ErroreMessage/ErroreMessage";
 import { useState } from "react";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ImageModal from "./components/ImageModal/ImageModal";
-import Gooo from "./components/ggg/Gooo";
+import LoadMore from "./components/LoadMore/LoadMore";
 
 function App() {
   const {
@@ -42,7 +42,7 @@ function App() {
       ) : (
         <ImageGallery photos={photos} openModal={openModal} />
       )}
-      {photos && page < totalPages && <Gooo pageChange={loadMorePage} />}
+      {photos && page < totalPages && <LoadMore pageChange={loadMorePage} />}
       <ImageModal
         modalImg={modalImg}
         isOpen={openCloseModal}
