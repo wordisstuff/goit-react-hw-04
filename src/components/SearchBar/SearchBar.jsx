@@ -6,15 +6,15 @@ const SearchBar = ({ onSetSearchQuery }) => {
   const [value, setValue] = useState("");
 
   const handleChenge = ({ target }) => {
-    let queryWords = target.value.trim()
-    setValue(queryWords);
+    setValue(target.value);
   };
 
   const handleSubmit = (e) => {
 
     e.preventDefault();
-    if (value !== "") {
-      onSetSearchQuery(value);
+    let queryWord = value.trim()
+    if (queryWord !== "") {
+      onSetSearchQuery(queryWord);
     }else {
       toast("Попрацюй пальчиками🤪");
     }
