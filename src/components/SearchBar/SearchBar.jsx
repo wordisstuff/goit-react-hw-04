@@ -6,15 +6,17 @@ const SearchBar = ({ onSetSearchQuery }) => {
   const [value, setValue] = useState("");
 
   const handleChenge = ({ target }) => {
-    setValue(target.value);
+    setValue(target.value.trim());
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value === "") {
+    if (value !== "") {
+      onSetSearchQuery(value);
+    }else {
       toast("Попрацюй пальчиками🤪");
     }
-    onSetSearchQuery(value);
+    
   };
 
   return (
