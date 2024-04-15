@@ -6,7 +6,7 @@ import ErroreMessage from "./components/ErroreMessage/ErroreMessage";
 import { useState } from "react";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ImageModal from "./components/ImageModal/ImageModal";
-import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
+import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 
 function App() {
   const {
