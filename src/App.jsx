@@ -1,4 +1,3 @@
-// import { useEffect, useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
 import usePhotosSearch from "./hooks/usePhotosSearch";
@@ -43,7 +42,6 @@ function App() {
       ) : (
         <ImageGallery photos={photos} openModal={openModal} />
       )}
-
       {photos && page < totalPages && <LoadMoreBtn pageChange={loadMorePage} />}
       <ImageModal
         modalImg={modalImg}
