@@ -6,7 +6,7 @@ const SearchBar = ({ onSetSearchQuery }) => {
   const [value, setValue] = useState("");
 
   const handleChenge = ({ target }) => {
-    let queryWords = target.value.split(' ').filter(word => word !== '')
+    let queryWords = target.value.split(' ').filter(word => word !== '').join(' ')
     setValue(queryWords);
   };
 
