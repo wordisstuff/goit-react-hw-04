@@ -1,34 +1,55 @@
 // import { useEffect, useState } from "react";
 import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
-import ImaeGallery from "./components/ImaeGallery/ImaeGallery";
 import usePhotosSearch from "./hooks/usePhotosSearch";
 import Loader from "./components/Loader/Loader";
-import ErroreMessage from "./components/Loader/ErroreMessage";
+import ErroreMessage from "./components/ErroreMessage/ErroreMessage";
+import { useState } from "react";
+import ImageGallery from "./components/ImageGallery/ImageGallery";
+import ImageModal from "./components/ImageModal/ImageModal";
+import LoadMoreBtn from "./components/loadMoreBtn/LoadMoreBtn";
 
 function App() {
-  const { photos, isLoading, isError, onSetSearchQuery } = usePhotosSearch();
-  // const [count, setCount] = useState(0);
+  const {
+    setIsloading,
+    setPage,
+    page,
+    totalPages,
+    photos,
+    isLoading,
+    isError,
+    onSetSearchQuery,
+  } = usePhotosSearch();
+  const [modalImg, setModalImg] = useState(null);
+  const [openCloseModal, setOpenCloseModal] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(isLoading);
-  //   console.log(isError);
-  //   console.log(photos);
-  // }, []);
+  const loadMorePage = () => {
+    setIsloading(true);
+    page < totalPages ? setPage((prev) => prev + 1) : page;
+  };
 
-  console.log(isLoading);
-  console.log(isError);
-  // console.log(photos.results);
+  const openModal = (img) => {
+    setModalImg(img);
+    setOpenCloseModal(true);
+  };
+  const closeModal = () => setOpenCloseModal(false);
 
   return (
     <>
       <SearchBar onSetSearchQuery={onSetSearchQuery}></SearchBar>
+      {isLoading && <Loader />}
       {isError ? (
         <ErroreMessage />
       ) : (
-        <ImaeGallery photos={photos}></ImaeGallery>
+        <ImageGallery photos={photos} openModal={openModal} />
       )}
-      {isLoading ?? <Loader />}
+
+      {photos && page < totalPages && <LoadMoreBtn pageChange={loadMorePage} />}
+      <ImageModal
+        modalImg={modalImg}
+        isOpen={openCloseModal}
+        onCloseModal={closeModal}
+      />
     </>
   );
 }

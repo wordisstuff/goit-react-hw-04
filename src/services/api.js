@@ -10,7 +10,7 @@ export const api = axios.create({ baseURL: 'https://api.unsplash.com' });
 //     return data
 // }
 
-export const requestPhotosByQuery = async(query = "") => {
-    const {data}= await api.get(`/search/photos?page=${1}&query=${query}&${myId}`)
+export const requestPhotosByQuery = async (query = "", page = 1) => {
+    const {data}= await api.get(`/search/photos?page=${page}&orientation=landscape&per_page=${9}&query=${query}&${myId}`)
     return data
 }

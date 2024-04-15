@@ -7,6 +7,9 @@ const usePhotosSearch = () => {
   const [isError, setIserror] = useState(false);
   const [query, setQuery] = useState("");
 
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+
   //   useEffect(() => {
   //     async function fetchPhotos() {
   //       try {
@@ -28,24 +31,36 @@ const usePhotosSearch = () => {
     async function fetchPhotosByQuery() {
       try {
         setIsloading(true);
-        console.log(isLoading);
-        const data = await requestPhotosByQuery(query);
-        setPhotos(data.results);
+        const data = await requestPhotosByQuery(query, page);
+        !photos
+          ? setPhotos(data.results)
+          : setPhotos((prev) => [...prev, ...data.results]);
+
+        setTotalPages(data.total_pages);
       } catch (error) {
         setIserror(true);
       } finally {
         setIsloading(false);
-        console.log(isLoading);
       }
     }
     fetchPhotosByQuery();
-  }, [query]);
+  }, [query, page]);
 
   const onSetSearchQuery = (searchTerm) => {
-    setQuery(searchTerm);
+    if (searchTerm.trim() !== "") {
+      setQuery(searchTerm), setPhotos([]);
+    }
   };
-
-  return { photos, isLoading, isError, onSetSearchQuery };
+  return {
+    setIsloading,
+    setPage,
+    page,
+    totalPages,
+    photos,
+    isLoading,
+    isError,
+    onSetSearchQuery,
+  };
 };
 
 export default usePhotosSearch;

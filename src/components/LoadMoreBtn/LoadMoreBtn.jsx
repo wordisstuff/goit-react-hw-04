@@ -1,6 +1,7 @@
-const LoadMoreBtn = () => {
+const LoadMoreBtn = ({ pageChange }) => {
   const handleClick = (e) => {
     e.preventDefault();
+    pageChange();
   };
 
   return (

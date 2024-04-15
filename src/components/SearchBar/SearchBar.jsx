@@ -14,7 +14,6 @@ const SearchBar = ({ onSetSearchQuery }) => {
     if (value === "") {
       toast("Попрацюй пальчиками🤪");
     }
-    console.log(value);
     onSetSearchQuery(value);
   };
 
