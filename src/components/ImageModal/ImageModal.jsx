@@ -12,7 +12,7 @@ const ImageModal = ({ modalImg, isOpen, onCloseModal }) => {
       onRequestClose={onCloseModal}
     >
       {modalImg && (
-        <img className={CSS.imageModal} src={modalImg.urls.regular} />
+        <img className={CSS.imageModal} src={modalImg.imgUrl} />
       )}
     </Modal>
   );

@@ -5,7 +5,19 @@ const ImageGallery = ({ photos, openModal }) => {
   return (
     <>
       <ul className={CSS.list}>
-        <ImageCard photos={photos} openModal={openModal} />
+      {photos &&
+        photos.map(({id,urls,alt_description,user,likes}) => {
+          return (
+            <ImageCard  
+            id={id} 
+            urls={urls}
+             alt_description={alt_description} 
+             user={user} 
+             likes={likes} 
+             openModal={openModal} />
+          );
+        })}
+        
       </ul>
     </>
   );
