@@ -9,7 +9,7 @@ const ImageGallery = ({ photos, openModal }) => {
         photos.map(({id,urls,alt_description,user,likes}) => {
           return (
             <ImageCard  
-            id={id} 
+            key={id} 
             urls={urls}
              alt_description={alt_description} 
              user={user} 
