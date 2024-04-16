@@ -2,7 +2,7 @@ import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { MagnifyingGlass } from "react-loader-spinner";
 
-const SearchBar = ({ onSetSearchQuery }) => {
+const SearchBar = ({ onSetSearchQuery,setPage }) => {
   const [value, setValue] = useState("");
 
   const handleChenge = ({ target }) => {
@@ -15,6 +15,7 @@ const SearchBar = ({ onSetSearchQuery }) => {
     let queryWord = value.trim()
     if (queryWord !== "") {
       onSetSearchQuery(queryWord);
+      setPage(1)
     }else {
       toast("Попрацюй пальчиками🤪");
     }

@@ -35,7 +35,7 @@ function App() {
 
   return (
     <>
-      <SearchBar onSetSearchQuery={onSetSearchQuery}></SearchBar>
+      <SearchBar onSetSearchQuery={onSetSearchQuery} setPage={setPage} ></SearchBar>
       {isLoading && <Loader />}
       {isError ? (
         <ErroreMessage />
