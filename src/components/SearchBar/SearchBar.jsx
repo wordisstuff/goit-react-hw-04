@@ -11,8 +11,7 @@ const SearchBar = ({ setSearchBarQuery }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let queryWord = value.trim()
-    setSearchBarQuery(queryWord)
+    setSearchBarQuery(value.trim())
   };
 
   return (
