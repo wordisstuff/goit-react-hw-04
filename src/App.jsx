@@ -28,6 +28,15 @@ function App() {
     console.log(page)
   };
 
+  const setSearchBarQuery = (query)=> {
+    if (query !== "") {
+      onSetSearchQuery(query);
+      setPage(1)
+    }else {
+      toast("Попрацюй пальчиками🤪");
+    }
+  };
+
   const openModal = (img) => {
     setModalImg(img);
     setOpenCloseModal(true);
@@ -36,7 +45,7 @@ function App() {
 
   return (
     <>
-      <SearchBar onSetSearchQuery={onSetSearchQuery} setPage={setPage} ></SearchBar>
+      <SearchBar setSearchBarQuery={setSearchBarQuery} ></SearchBar>
       {isLoading && <Loader />}
       {isError ? (
         <ErroreMessage />
