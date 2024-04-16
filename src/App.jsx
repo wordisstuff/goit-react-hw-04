@@ -25,7 +25,6 @@ function App() {
   const loadMorePage = () => {
     setIsloading(true);
     page < totalPages ? setPage((prev) => prev + 1) : page;
-    console.log(page)
   };
 
   const setSearchBarQuery = (query)=> {
