@@ -19,7 +19,7 @@ setBtnOff(false)
   };
 
   return (
-    <header className={CSS.btn-container}>
+    <header >
       <form onSubmit={handleSubmit}>
         <input
           name="query"
@@ -29,7 +29,9 @@ setBtnOff(false)
           placeholder="Search..."
         />
         <Toaster />
-        {btnOff && value !== "" && <button type="submit" className={CSS.slide-btn}>🔍</button>}
+        {btnOff && value !== "" && <div className={CSS.btn-container} >
+        <button type="submit" className={CSS.slide-btn}>🔍</button>
+        </div>}
       </form>
     </header>
   );
