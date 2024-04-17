@@ -1,12 +1,16 @@
 import "./App.css";
 import SearchBar from "./components/SearchBar/SearchBar";
-import usePhotosSearch from "./hooks/usePhotosSearch";
 import Loader from "./components/Loader/Loader";
 import ErroreMessage from "./components/ErroreMessage/ErroreMessage";
-import { useState } from "react";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ImageModal from "./components/ImageModal/ImageModal";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+
+import usePhotosSearch from "./hooks/usePhotosSearch";
+
+import { useState } from "react";
+
+import toast from "react-hot-toast";
 
 function App() {
   const {

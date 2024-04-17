@@ -1,6 +1,6 @@
 import { useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import { MagnifyingGlass } from "react-loader-spinner";
+
+import { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ setSearchBarQuery }) => {
   const [value, setValue] = useState("");
@@ -28,7 +28,7 @@ setBtnOff(false)
           placeholder="Search..."
         />
         <Toaster />
-        {btnOff && <button type="submit">🔍</button>}
+        {btnOff || btnOff !== "" && <button type="submit">🔍</button>}
       </form>
     </header>
   );
