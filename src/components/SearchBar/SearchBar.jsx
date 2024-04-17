@@ -3,7 +3,7 @@ import { useState } from "react";
 import CSS from "./SearchBar.module.css";
 import { Toaster } from "react-hot-toast";
 
-const SearchBar = ({ setSearchBarQuery }) => {
+const SearchBar = ({ setSearchBarQuery, isError }) => {
   const [value, setValue] = useState("");
   const [btnOff, setBtnOff] = useState(true);
 
@@ -30,7 +30,7 @@ const SearchBar = ({ setSearchBarQuery }) => {
           placeholder="Search..."
         />
         <Toaster />
-        {btnOff && value !== "" && (
+        {btnOff && value !== "" && !isError && (
           <div className={CSS.btncontainer}>
             <button type="submit" className={CSS.slidebtn}>
               🔍

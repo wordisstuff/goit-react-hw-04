@@ -6,36 +6,55 @@ import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ImageModal from "./components/ImageModal/ImageModal";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 
-import usePhotosSearch from "./hooks/usePhotosSearch";
+import { requestPhotosByQuery } from "./services/api";
 
-import { useState } from "react";
+// import usePhotosSearch from "./hooks/usePhotosSearch";
+
+import { useEffect, useState } from "react";
 
 import toast from "react-hot-toast";
 
 function App() {
-  const {
-    setIsloading,
-    setPage,
-    page,
-    totalPages,
-    photos,
-    isLoading,
-    isError,
-    onSetSearchQuery,
-  } = usePhotosSearch();
+  const [photos, setPhotos] = useState(null);
+  const [isLoading, setIsloading] = useState(false);
+  const [isError, setIserror] = useState(false);
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [modalImg, setModalImg] = useState(null);
   const [openCloseModal, setOpenCloseModal] = useState(false);
+
+  useEffect(() => {
+    if (query.length === 0) return;
+    async function fetchPhotosByQuery() {
+      try {
+        setIsloading(true);
+        const data = await requestPhotosByQuery(query, page);
+        !photos
+          ? setPhotos(data.results)
+          : setPhotos((prev) => [...prev, ...data.results]);
+
+        setTotalPages(data.total_pages);
+      } catch (error) {
+        setIserror(true);
+      } finally {
+        setIsloading(false);
+      }
+    }
+    fetchPhotosByQuery();
+  }, [query, page]);
 
   const loadMorePage = () => {
     setIsloading(true);
     page < totalPages ? setPage((prev) => prev + 1) : page;
   };
 
-  const setSearchBarQuery = (query)=> {
+  const setSearchBarQuery = (query) => {
     if (query !== "") {
-      onSetSearchQuery(query);
-      setPage(1)
-    }else {
+      setQuery(query);
+      setPhotos([]);
+      setPage(1);
+    } else {
       toast("Попрацюй пальчиками🤪");
     }
   };
@@ -48,7 +67,10 @@ function App() {
 
   return (
     <>
-      <SearchBar setSearchBarQuery={setSearchBarQuery} ></SearchBar>
+      <SearchBar
+        setSearchBarQuery={setSearchBarQuery}
+        isError={isError}
+      ></SearchBar>
       {isLoading && <Loader />}
       {isError ? (
         <ErroreMessage />
