@@ -25,7 +25,7 @@ const SearchBar = ({ setSearchBarQuery }) => {
           placeholder="Search..."
         />
         <Toaster />
-        <button type="submit">
+        {value !== ''|| value ===value && <button type="submit">
           <MagnifyingGlass
             visible={true}
             height="30"
@@ -36,7 +36,7 @@ const SearchBar = ({ setSearchBarQuery }) => {
             glassColor="#c0efff"
             color="#e15b64"
           />
-        </button>
+        </button>}
       </form>
     </header>
   );
