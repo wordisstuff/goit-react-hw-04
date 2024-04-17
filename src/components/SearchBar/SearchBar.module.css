@@ -1,28 +1,39 @@
-.btn-container{
+.header{
     position: fixed;
-    top: 0;
     left: 50%;
+    top: 5%;
     transform: translateX(-50%);
 }
-.slide-btn{
-    padding: 10px 20px;
+.input{
+    height: 22px;
+}
+
+.btncontainer{
+    position: fixed;
+    top: -6px;
+    left: 50%;
+    /* transform: translateX(-10%); */
+}
+.slidebtn{
+    /* position: fixed; */
+    /* padding: 10px 20px; */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
-.slide-btn:hover{
+.slidebtn:hover{
     background-color: #fa9b9b;
 }
-/* @keyframes slideIn
+@keyframes slideIn
 {
     from{
-        transform: translateY(-100%);
+        transform: translateX(-250%);
     } to {
-        transform: translateY(0);
+        transform: translateX(190%);
     }
 }
 
-.slide-btn{ 
+.slidebtn{ 
     animation: slideIn 0.5s forwards;
-} */
+}

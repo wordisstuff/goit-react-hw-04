@@ -1,27 +1,28 @@
 import { useState } from "react";
 
-// import CSS from "./SearchBar.module.css"
+import CSS from "./SearchBar.module.css";
 import { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ setSearchBarQuery }) => {
   const [value, setValue] = useState("");
-  const [btnOff, setBtnOff] = useState(true)
+  const [btnOff, setBtnOff] = useState(true);
 
   const handleChenge = ({ target }) => {
-    setBtnOff(true)
+    setBtnOff(true);
     setValue(target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-setBtnOff(false)
-    setSearchBarQuery(value.trim())
+    setBtnOff(false);
+    setSearchBarQuery(value.trim());
   };
 
   return (
-    <header >
+    <header className={CSS.header}>
       <form onSubmit={handleSubmit}>
         <input
+          className={CSS.input}
           name="query"
           onChange={handleChenge}
           value={value}
@@ -29,10 +30,13 @@ setBtnOff(false)
           placeholder="Search..."
         />
         <Toaster />
-        {btnOff && value !== "" && <button type="submit" className={CSS.slide-btn}>🔍</button>}
-        {/* {btnOff && value !== "" && <div className={CSS.btn-container} >
-        <button type="submit" className={CSS.slide-btn}>🔍</button>
-        </div>} */}
+        {btnOff && value !== "" && (
+          <div className={CSS.btncontainer}>
+            <button type="submit" className={CSS.slidebtn}>
+              🔍
+            </button>
+          </div>
+        )}
       </form>
     </header>
   );
