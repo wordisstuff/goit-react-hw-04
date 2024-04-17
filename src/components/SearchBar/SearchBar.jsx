@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+import CSS from "./SearchBar/SearchBar.module.css"
 import { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ setSearchBarQuery }) => {
@@ -18,7 +19,7 @@ setBtnOff(false)
   };
 
   return (
-    <header>
+    <header className={CSS.btn-container}>
       <form onSubmit={handleSubmit}>
         <input
           name="query"
@@ -28,7 +29,7 @@ setBtnOff(false)
           placeholder="Search..."
         />
         <Toaster />
-        {btnOff && value !== "" && <button type="submit">🔍</button>}
+        {btnOff && value !== "" && <button type="submit" className={CSS.slide-btn}>🔍</button>}
       </form>
     </header>
   );
