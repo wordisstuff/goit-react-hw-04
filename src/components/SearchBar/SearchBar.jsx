@@ -4,13 +4,16 @@ import { MagnifyingGlass } from "react-loader-spinner";
 
 const SearchBar = ({ setSearchBarQuery }) => {
   const [value, setValue] = useState("");
+  const [btnOff, setBtnOff] = useState(true)
 
   const handleChenge = ({ target }) => {
+    setBtnOff(true)
     setValue(target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+setBtnOff(false)
     setSearchBarQuery(value.trim())
   };
 
@@ -25,7 +28,7 @@ const SearchBar = ({ setSearchBarQuery }) => {
           placeholder="Search..."
         />
         <Toaster />
-        {value !== ''|| value ===value && <button type="submit">
+        {btnOff && <button type="submit">
           <MagnifyingGlass
             visible={true}
             height="30"
