@@ -14,7 +14,7 @@
 .slide-btn:hover{
     background-color: #fa9b9b;
 }
-@keyframes slideIn
+/* @keyframes slideIn
 {
     from{
         transform: translateY(-100%);
@@ -25,4 +25,4 @@
 
 .slide-btn{ 
     animation: slideIn 0.5s forwards;
-}
+} */
