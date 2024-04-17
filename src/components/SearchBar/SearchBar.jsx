@@ -28,7 +28,7 @@ setBtnOff(false)
           placeholder="Search..."
         />
         <Toaster />
-        {btnOff || btnOff !== "" && <button type="submit">🔍</button>}
+        {btnOff && value !== "" && <button type="submit">🔍</button>}
       </form>
     </header>
   );
