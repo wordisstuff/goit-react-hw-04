@@ -28,18 +28,7 @@ setBtnOff(false)
           placeholder="Search..."
         />
         <Toaster />
-        {btnOff && <button type="submit">
-          <MagnifyingGlass
-            visible={true}
-            height="30"
-            width="30"
-            ariaLabel="magnifying-glass-loading"
-            wrapperStyle={{}}
-            wrapperClass="magnifying-glass-wrapper"
-            glassColor="#c0efff"
-            color="#e15b64"
-          />
-        </button>}
+        {btnOff && <button type="submit">🔍</button>}
       </form>
     </header>
   );
