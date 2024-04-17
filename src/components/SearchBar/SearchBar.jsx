@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import CSS from "./SearchBar.module.css"
+// import CSS from "./SearchBar.module.css"
 import { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ setSearchBarQuery }) => {
