@@ -29,9 +29,12 @@ setBtnOff(false)
           placeholder="Search..."
         />
         <Toaster />
-        {btnOff && value !== "" && <div className={CSS.btn-container} >
+        <div className={CSS.btn-container} >
         <button type="submit" className={CSS.slide-btn}>🔍</button>
-        </div>}
+        </div>
+        {/* {btnOff && value !== "" && <div className={CSS.btn-container} >
+        <button type="submit" className={CSS.slide-btn}>🔍</button>
+        </div>} */}
       </form>
     </header>
   );
